@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
 
 import Posts from '../components/Posts'
+import AddPost from '../components/AddPost'
 
 import { PrismaClient } from '@prisma/client'
 
@@ -20,6 +21,7 @@ export default function Home({ posts }) {
         </h1>
 
         <Posts posts={posts} />
+        <AddPost />
       </main>
     </div>
   )
