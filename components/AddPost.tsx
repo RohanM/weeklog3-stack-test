@@ -5,7 +5,15 @@ export default function AddPost(): ReactElement {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(post);
+
+    fetch("/api/posts", {
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ post }),
+    });
   };
 
   return (
