@@ -1,7 +1,10 @@
 import Head from 'next/head'
+import { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+import { PrismaClient } from '@prisma/client'
+
+export default function Home({ posts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +16,22 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        {posts.map(post => (
+          <p key="{post.id}">{post.title}</p>
+        ))}
       </main>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const prisma = new PrismaClient();
+  const posts = (await prisma.post.findMany()).map(
+    post => ({ ...post, createdAt: post.createdAt.toString() })
+  );
+
+  return {
+    props: { posts }
+  };
 }
