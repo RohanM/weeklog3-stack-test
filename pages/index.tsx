@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
 
+import Posts from '../components/Posts'
+
 import { PrismaClient } from '@prisma/client'
 
 export default function Home({ posts }) {
@@ -17,9 +19,7 @@ export default function Home({ posts }) {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        {posts.map(post => (
-          <p key="{post.id}">{post.title}</p>
-        ))}
+        <Posts posts={posts} />
       </main>
     </div>
   )
