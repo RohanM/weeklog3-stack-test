@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 
-export default function AddPost(): string {
+export default function AddPost(): ReactElement {
   let [post, setPost] = useState("");
 
   const submit = (e) => {
