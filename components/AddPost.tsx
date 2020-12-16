@@ -1,12 +1,12 @@
 import { ReactElement, useState } from 'react'
 
-export default function AddPost(): ReactElement {
+export default function AddPost({ onPost }): ReactElement {
   let [post, setPost] = useState("");
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
-    fetch("/api/posts", {
+    const response = await fetch("/api/posts", {
       method: "POST",
       headers: {
         Accept: 'application/json',
@@ -14,6 +14,9 @@ export default function AddPost(): ReactElement {
       },
       body: JSON.stringify({ post }),
     });
+    const newPost = await response.json();
+
+    onPost(newPost.post);
   };
 
   return (

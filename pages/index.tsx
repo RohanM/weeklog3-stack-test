@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
@@ -7,7 +9,13 @@ import AddPost from '../components/AddPost'
 
 import { PrismaClient } from '@prisma/client'
 
-export default function Home({ posts }) {
+export default function Home({ posts: initialPosts }) {
+  let [posts, setPosts] = useState(initialPosts);
+
+  const onPost = (post) => {
+    setPosts(posts.concat(post));
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +29,7 @@ export default function Home({ posts }) {
         </h1>
 
         <Posts posts={posts} />
-        <AddPost />
+        <AddPost onPost={onPost} />
       </main>
     </div>
   )
