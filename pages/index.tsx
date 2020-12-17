@@ -4,15 +4,17 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
 
+import { Post } from '../lib/types'
+
 import Posts from '../components/Posts'
 import AddPost from '../components/AddPost'
 
 import { PrismaClient } from '@prisma/client'
 
-export default function Home({ posts: initialPosts }) {
+export default function Home({ posts: initialPosts }: { posts: Post[] }) {
   let [posts, setPosts] = useState(initialPosts);
 
-  const onPost = (post) => {
+  const onPost = (post: Post) => {
     setPosts(posts.concat(post));
   };
 

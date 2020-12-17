@@ -1,9 +1,10 @@
-import { ReactElement, useState } from 'react'
+import { ReactElement, FormEvent, useState } from 'react'
+import { Post } from '../lib/types'
 
-export default function AddPost({ onPost }): ReactElement {
+export default function AddPost({ onPost }: { onPost: (post: Post) => void }): ReactElement {
   let [post, setPost] = useState("");
 
-  const submit = async (e) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
 
     const response = await fetch("/api/posts", {
