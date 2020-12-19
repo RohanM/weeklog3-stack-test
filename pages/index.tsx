@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
@@ -11,7 +11,7 @@ import AddPost from '../components/AddPost'
 
 import { PrismaClient } from '@prisma/client'
 
-export default function Home({ posts: initialPosts }: { posts: Post[] }) {
+export default function Home({ posts: initialPosts }: { posts: Post[] }): ReactElement {
   let [posts, setPosts] = useState(initialPosts);
 
   const onPost = (post: Post) => {
