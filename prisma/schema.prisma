@@ -10,6 +10,5 @@ datasource db {
 model post {
   id        Int      @id @default(autoincrement())
   title     String
-  body      String?
   createdAt DateTime @default(now())
 }
