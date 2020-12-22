@@ -1,14 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import Posts from '../../lib/data/posts'
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
-    const prisma = new PrismaClient();
-
-    const post = await prisma.post.create({
-      data: req.body,
-    });
+    const post = await Posts.create(req.body);
 
     res.statusCode = 200;
     res.json({ post });
