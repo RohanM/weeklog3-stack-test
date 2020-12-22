@@ -9,7 +9,7 @@ import styles from '../../styles/Home.module.css'
 
 import { Post } from '../../lib/types'
 
-import Posts from '../../components/Posts'
+import PostList from '../../components/PostList'
 import AddPost from '../../components/AddPost'
 
 export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactElement {
@@ -34,7 +34,7 @@ export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactE
           Chat
         </h1>
 
-        <Posts posts={posts} />
+        <PostList posts={posts} />
         <AddPost author={name} onPost={onPost} />
       </main>
     </div>
