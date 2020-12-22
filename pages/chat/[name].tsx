@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { PrismaClient } from '@prisma/client'
+import Posts from '../../lib/data/posts'
 
 import styles from '../../styles/Home.module.css'
 
@@ -42,10 +42,7 @@ export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactE
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const prisma = new PrismaClient();
-  const posts = (await prisma.post.findMany()).map(
-    post => ({ ...post, createdAt: post.createdAt.toString() })
-  );
+  const posts = await Posts.all();
 
   return {
     props: { posts }
