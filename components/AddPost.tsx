@@ -1,8 +1,12 @@
 import { ReactElement, FormEvent, useState } from 'react'
 import { Post } from '../lib/types'
 
-export default function AddPost({ onPost }: { onPost: (post: Post) => void }): ReactElement {
-  let [post, setPost] = useState("");
+export default function AddPost({
+  author,
+  onPost
+}: { author: string, onPost: (post: Post) => void }): ReactElement {
+
+  let [message, setMessage] = useState("");
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -13,16 +17,18 @@ export default function AddPost({ onPost }: { onPost: (post: Post) => void }): R
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ post }),
+      body: JSON.stringify({ author, message }),
     });
     const newPost = await response.json();
 
     onPost(newPost.post);
+
+    setMessage("");
   };
 
   return (
     <form onSubmit={submit}>
-      <input type="text" value={post} onChange={e => setPost(e.target.value)} />
+      <input type="text" value={message} onChange={e => setMessage(e.target.value)} />
       <button type="submit">Add</button>
     </form>
   );
