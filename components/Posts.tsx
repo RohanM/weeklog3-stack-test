@@ -5,7 +5,7 @@ export default function Posts({ posts }: { posts: Post[] }): ReactElement {
   return (
     <>
       {posts.map(post => (
-        <p key={post.id}>{post.message}</p>
+        <p key={post.id}><strong>{post.author}:</strong> {post.message}</p>
       ))}
     </>
   );
