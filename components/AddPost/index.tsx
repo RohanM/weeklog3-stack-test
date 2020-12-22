@@ -6,7 +6,7 @@ export default function AddPost({
   onPost
 }: { author: string, onPost: (post: Post) => void }): ReactElement {
 
-  let [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -32,4 +32,4 @@ export default function AddPost({
       <button type="submit">Add</button>
     </form>
   );
-};
+}

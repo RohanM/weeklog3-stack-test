@@ -16,7 +16,7 @@ export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactE
   const router = useRouter();
   const name = router.query.name as string;
 
-  let [posts, setPosts] = useState(initialPosts);
+  const [posts, setPosts] = useState(initialPosts);
 
   const onPost = (post: Post) => {
     setPosts(posts.concat(post));
@@ -41,7 +41,7 @@ export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactE
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await Posts.all();
 
   return {
