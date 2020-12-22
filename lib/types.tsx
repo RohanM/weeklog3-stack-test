@@ -1,5 +1,8 @@
-export interface Post {
-  id: number,
+export interface NewPost {
   author: string,
   message: string,
+}
+
+export interface Post extends NewPost {
+  id: number,
 }
