@@ -1,12 +1,14 @@
 import { ReactElement } from 'react'
 import { Post } from '../lib/types'
 
+import styles from './Posts.module.css'
+
 export default function Posts({ posts }: { posts: Post[] }): ReactElement {
   return (
-    <>
+    <div className={styles.posts}>
       {posts.map(post => (
-        <p key={post.id}><strong>{post.author}:</strong> {post.message}</p>
+        <div key={post.id} className={styles.post}><span>{post.author}:</span> {post.message}</div>
       ))}
-    </>
+    </div>
   );
 };
