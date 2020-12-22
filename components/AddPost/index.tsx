@@ -1,5 +1,5 @@
 import { ReactElement, FormEvent, useState } from 'react'
-import { Post } from '../lib/types'
+import { Post } from '../../lib/types'
 
 export default function AddPost({
   author,
