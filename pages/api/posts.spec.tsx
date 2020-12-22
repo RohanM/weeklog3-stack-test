@@ -28,5 +28,25 @@ describe("posts API", () => {
         },
       });
     });
+
+    describe("when invalid parameters are passed", () => {
+      it("responds with an error", async () => {
+        const req = httpMocks.createRequest<NextApiRequest>({
+          method: "POST",
+          body: {
+            id: 123,
+            author: "author",
+            message: "message",
+            createdAt: "1111-11-11",
+            haha: "lol",
+          },
+        });
+        const res = httpMocks.createResponse<NextApiResponse>();
+
+        await Posts(req, res);
+
+        expect(res.statusCode).toEqual(422);
+      });
+    });
   });
 });
