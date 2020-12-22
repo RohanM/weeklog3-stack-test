@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 export default function EnterName(): ReactElement {
   const router = useRouter();
-  let [name, setName]: [name: string, setName: (arg0: string) => void] = useState("");
+  const [name, setName]: [name: string, setName: (arg0: string) => void] = useState("");
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
