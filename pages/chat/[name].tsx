@@ -14,7 +14,7 @@ import AddPost from '../../components/AddPost'
 
 export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactElement {
   const router = useRouter();
-  const { name } = router.query
+  const name = router.query.name as string;
 
   let [posts, setPosts] = useState(initialPosts);
 
