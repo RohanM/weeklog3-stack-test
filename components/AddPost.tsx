@@ -22,6 +22,8 @@ export default function AddPost({
     const newPost = await response.json();
 
     onPost(newPost.post);
+
+    setMessage("");
   };
 
   return (
