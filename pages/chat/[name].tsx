@@ -41,7 +41,7 @@ export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactE
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await Posts.all();
 
   return {
