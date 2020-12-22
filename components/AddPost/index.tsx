@@ -32,4 +32,4 @@ export default function AddPost({
       <button type="submit">Add</button>
     </form>
   );
-};
+}

@@ -11,4 +11,4 @@ export default function PostList({ posts }: { posts: Post[] }): ReactElement {
       ))}
     </div>
   );
-};
+}
