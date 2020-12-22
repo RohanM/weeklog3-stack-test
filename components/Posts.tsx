@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { Post } from '../lib/types'
 
-import styles from './Posts.module.css'
+import styles from './Posts.module.scss'
 
 export default function Posts({ posts }: { posts: Post[] }): ReactElement {
   return (
