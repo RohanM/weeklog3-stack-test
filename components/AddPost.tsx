@@ -1,7 +1,11 @@
 import { ReactElement, FormEvent, useState } from 'react'
 import { Post } from '../lib/types'
 
-export default function AddPost({ onPost }: { onPost: (post: Post) => void }): ReactElement {
+export default function AddPost({
+  author,
+  onPost
+}: { author: string, onPost: (post: Post) => void }): ReactElement {
+
   let [message, setMessage] = useState("");
 
   const submit = async (e: FormEvent) => {
@@ -13,7 +17,7 @@ export default function AddPost({ onPost }: { onPost: (post: Post) => void }): R
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ author, message }),
     });
     const newPost = await response.json();
 

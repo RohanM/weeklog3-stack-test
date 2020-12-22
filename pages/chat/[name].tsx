@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react'
 import { GetServerSideProps } from 'next'
-//import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { PrismaClient } from '@prisma/client'
@@ -13,8 +13,8 @@ import Posts from '../../components/Posts'
 import AddPost from '../../components/AddPost'
 
 export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactElement {
-  //const router = useRouter();
-  //const { name } = router.query
+  const router = useRouter();
+  const { name } = router.query
 
   let [posts, setPosts] = useState(initialPosts);
 
@@ -35,7 +35,7 @@ export default function Chat({ posts: initialPosts }: { posts: Post[] }): ReactE
         </h1>
 
         <Posts posts={posts} />
-        <AddPost onPost={onPost} />
+        <AddPost author={name} onPost={onPost} />
       </main>
     </div>
   );
