@@ -1,7 +1,7 @@
 module.exports = {
   roots: ['<rootDir>'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
-  setupFilesAfterEnv: ["<rootDir>/testing/enzyme.ts"],
+  setupFilesAfterEnv: ["<rootDir>/testing/jest-dom.ts"],
   testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
   transform: {
