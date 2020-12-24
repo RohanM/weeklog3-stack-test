@@ -1,7 +1,6 @@
-import { mount } from 'enzyme'
+import { render, fireEvent, screen } from '@testing-library/react'
 
 import Home from './index'
-import EnterName from '../components/EnterName'
 
 const mockRouter = { push: jest.fn() };
 jest.mock('next/router', () =>
@@ -10,10 +9,13 @@ jest.mock('next/router', () =>
 
 describe("Home page", () => {
   it("accepts my name then takes me to the chat", async () => {
-    const wrapper = mount(<Home />);
+    render(<Home />);
 
-    wrapper.find(EnterName).find("input").simulate("change", { target: { value: "Montgomery" } });
-    wrapper.find(EnterName).find("form").simulate("submit");
+    fireEvent.change(
+      screen.getByPlaceholderText("Your name..."),
+      { target: { value: "Montgomery" } }
+    );
+    fireEvent.click(screen.getByText("Begin"));
 
     expect(mockRouter.push).toHaveBeenCalledWith("/chat/Montgomery");
   });
