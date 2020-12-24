@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Posts from '../../lib/data/posts'
 
 
-export default async (req: NextApiRequest, res: NextApiResponse): void => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === "POST") {
     try {
       const post = await Posts.create(req.body);
